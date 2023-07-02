@@ -1,0 +1,65 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    display: flex;
+    width: 90%;
+    flex-direction: row;
+   
+   position: relative;
+}
+
+.container .left{
+    flex-basis: 20%;
+}
+.container .right{
+    flex-basis: 10%;
+}
+
+.container .center{
+    flex-basis: 80%;
+    background-color: aliceblue;
+    margin: 10px;
+    padding: 10px 50px;
+}
+
+.container .center .heading{
+    text-align: center;
+}
+
+.formContent input{
+    width: 100%;
+    padding: 5px;
+    margin:5px;
+}
+.formContent textarea{
+    width: 100%;
+    padding: 5px;
+    margin:5px;
+}
+.formContent select{
+    width: 100%;
+    padding: 5px;
+    margin:5px;
+}
+
+.formContent button{
+    width: 25%;
+    padding: 10px;
+    margin: 20px;
+    background: black;
+    color: white;
+    left: 35%;
+    border: 5px solid black;
+    border-radius: 5px;
+    /* for placing the button in center of the page*/
+    position: absolute;
+    cursor: pointer;
+}
+
+.link .para{
+    text-align: center;
+    margin: 10px;
+}

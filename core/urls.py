@@ -1,15 +1,18 @@
 from django.contrib import admin
 from core import views
-from django.urls import path,include
+from django.urls import path
 
-admin.site.site_header = "GoGlide Admin"
-admin.site.site_title = "GoGlide Admin Portal"
-admin.site.index_title = "Welcome to GoGlide Portal"
+
 
 
 urlpatterns = [
-    path('',views.index,name='home'),
-    path('admin/',admin.site.urls),
-   
+    path('',views.index,name=""),
+    path('signin',views.signin,name="signin"),
+    path('signOut',views.signOut,name="signOut"),
+    path('signup',views.signup,name="signup"),
+    path('midConfirm',views.mid,name="midConfirm"),
+    path('driverdetails',views.driverdetails,name="driverdetails"),
+
+
 
 ]
