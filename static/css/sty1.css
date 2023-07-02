@@ -1,0 +1,60 @@
+.body{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    display: flex;
+    width: 90%;
+    flex-direction: row;
+   
+   position: relative;
+}
+
+.container .left{
+    flex-basis: 20%;
+}
+.container .right{
+    flex-basis: 10%;
+}
+
+.container .center{
+    flex-basis: 80%;
+    background-color: aliceblue;
+    margin: 10px;
+    padding: 10px 50px;
+}
+
+.container .center .heading{
+    text-align: center;
+}
+
+.container .center .option {
+    display: flex;
+    
+    padding: 5px;
+    margin:10px;
+}
+.container .center .option .customer{
+    padding: 10px;
+    margin:10px;
+    border: 3px solid black;
+    background: black;
+    
+}
+.container .center .option .customer a{
+ color: white;
+ text-decoration:none;
+    
+}
+.container .center .option .driver{
+    padding: 10px;
+    margin:10px;
+    border: 3px solid black;
+    background: black;
+}
+.container .center .option .driver a{
+ color: white;
+ text-decoration:none;
+    
+}
