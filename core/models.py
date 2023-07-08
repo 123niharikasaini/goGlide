@@ -50,3 +50,40 @@ class Driver(models.Model):
 
     def __str__(self):
         return self.name
+    
+
+class Booking(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
+    number=models.IntegerField()
+    pin=models.IntegerField()
+    location=models.CharField(max_length=200)
+    date = models.DateTimeField(default=datetime.now)
+
+    class Meta:
+        # meta data
+        # telling django to sort the data on column 
+        ordering=['-date']
+
+    def __str__(self):
+        return self.name
+
+    
+class Rent_info(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
+    number=models.IntegerField()
+    pin=models.IntegerField()
+    location=models.CharField(max_length=200)
+    dateBooked=models.DateTimeField(default=datetime.now)
+    timeDuration=models.CharField(max_length=20)
+    startTime=models.DateTimeField(default=datetime.now)
+    dateCreated=models.DateTimeField(default=datetime.now)
+
+    class Meta:
+        # meta data
+        # telling django to sort the data on column 
+        ordering=['-dateCreated']
+
+    def __str__(self):
+        return self.name

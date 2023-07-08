@@ -328,12 +328,12 @@ p {
             <h1 style="color:#ffc61a;text-align:center;font-size: 40px;font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">goGLide </h1>
             <!-- yha image krna -->
             <!-- <img src="" -->
-            <a href="#" id="logo"><img src="{% static 'images/' %}" alt=""></a>
+            {% comment %} <a href="#" id="logo"><img src="{% static 'images/' %}" alt=""></a> {% endcomment %}
             <nav class="navbar">
                 <a href="#">home</a>
                 <a href="#">About</a>
                 <a href="#">Contact</a>
-                <a href="login.html">Login</a>
+                <a href="signOut">LogOut</a>
             </nav>
             <a href="#" id="menu-bars" class="fas fa-bars"></a>
         </header>
@@ -354,20 +354,23 @@ p {
         <div class="inner-content">
            <div class="contact-form">
                <div class="form-heading">
-                   <h1>book a cab</h1>
+                   <h1>Book a cab</h1>
                </div>
+               <form action={% url 'book' %} method="POST">
+                {% csrf_token %}
                <div class="form-fields">
-                   <input type="text" placeholder="name">
-                   <input type="text" placeholder="phone">
-                   <input type="text" placeholder="when">
-                   <input type="text" placeholder="date">
-                   <input type="text" placeholder="start">
-                   <input type="text" placeholder="end">
+                   <input type="text" placeholder="name" name="name">
+                   <input type="number" placeholder="phone" name="phone">
+                   {% comment %} <input type="text" placeholder="when" name="when">
+                   <input type="text" placeholder="date" name="date"> {% endcomment %}
+                   <input type="number" placeholder="pin Code" name="pin">
+                   <input type="text" placeholder="location" name="location">
                </div>
                <div class="submit">
-                <a href={% static "submit.html" %}>Submit</a>
+                <input type="submit" value="Submit">
                </div>
-              
+            </form>
+
            </div>
            
         </div>
@@ -386,20 +389,32 @@ p {
         <div class="inner-content">
            <div class="contact-form">
                <div class="form-heading">
-                   <h1>book a cab</h1>
+                   <h1>Rent a cab</h1>
                </div>
+               <form action={% url 'rent' %} method="POST">
+                {% csrf_token %}
                <div class="form-fields">
-                   <input type="text" placeholder="name">
-                   <input type="text" placeholder="phone">
-                   <input type="text" placeholder="when">
-                   <input type="text" placeholder="date">
-                   <input type="text" placeholder="start">
-                   <input type="text" placeholder="end">
+                   <input type="text" placeholder="name" name="name">
+                   <input type="number" placeholder="phone" name="phone">
+                   <input type="date" placeholder="date" name="date">
+                   <select name="timeDuration">
+                    <option value="" disabled>Time Duration</option>
+                    <option value="1">1 hour</option>
+                    <option value="2">2 hour</option>
+                    <option value="3">3 hour</option>
+                    <option value="4">4 hour</option>
+                    <option value="5">5 hour</option>
+                    <option value="6">6 hour</option>
+
+                   </select>
+                   <input type="time" placeholder="starting time" name="start_time">
+                   <input type="number" placeholder="pin" name="pin">
+                   <input type="text" placeholder="location" name="location">
                </div>
                <div class="submit">
-                <a href={% static "submit.html" %}>Submit</a>
+                <input type="submit" value="Submit">
                </div>
-              
+            </form>
            </div>
            
         </div>

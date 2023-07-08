@@ -3,7 +3,7 @@ from django.contrib import auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from core.models import Customer,Driver
+from core.models import Customer,Driver,Booking,Rent_info
 # Create your views here.
 
 @login_required(login_url="signin")
@@ -48,10 +48,10 @@ def signup(request):
             if User.objects.filter(email=email).exists():
                 # if already exists
                 messages.info(request,'Email taken')
-                return redirect("signUp")
+                return redirect("signup")
             elif User.objects.filter(username=username).exists():
                 messages.info(request,"Username taken")
-                return redirect("signUp")
+                return redirect("signup")
             else:
                 # creating the user
                 user=User.objects.create_user(username=username,first_name=fname,last_name=lname,email=email)
@@ -107,9 +107,9 @@ def driverdetails(request):
 
                 # create a profile object for new user
                 user_model=User.objects.get(username=username)
-                new_profile=Driver.objects.create(user=user_model,name=user_model.first_name+user_model.last_name,contact_no=contact,gender=gender,email_id=user_model.email,address=add,licence_no=licenceNo,vehicle_no=vehicleNo,vehicle_type=vehicleType,D_O_B=dob)
+                new_profile=Driver.objects.create(user=user_model,name=user_model.first_name+" "+user_model.last_name,contact_no=contact,gender=gender,email_id=user_model.email,address=add,licence_no=licenceNo,vehicle_no=vehicleNo,vehicle_type=vehicleType,D_O_B=dob)
                 new_profile.save()
-                return redirect("/")
+                return redirect("driverLogin")
         else:
             messages.info(request,"Password not matching")
             return redirect('driverdetails')
@@ -119,6 +119,58 @@ def driverdetails(request):
 
 
 @login_required(login_url="signin")
+def driverLogin(request):
+    try:
+        profile=Driver.objects.get(user=request.user)
+        obj={'obj':profile}
+        return render(request,'driverLogin.html',obj)
+    except Driver.DoesNotExist:
+        # if not exit, throw an error
+        return render(request,'index.html')
+
+    
+
+def book(request):
+    if request.method=="POST":
+        msg=""
+        name=request.POST["name"]
+        phone=request.POST["phone"]
+        pin=request.POST["pin"]
+        location=request.POST["location"]
+
+        user=request.user #currnetly logged is user
+        # user_model=User.objects.get(username=username)
+        book_model=Booking.objects.create(user=request.user,name=name,number=phone,pin=pin,location=location)
+        book_model.save()
+        return render(request,"submit.html",{msg:"Data Successfully saved"})
+    else:
+        return HttpResponse("Not working")
+
+def rent(request):
+    if request.method=="POST":
+        msg=""
+        name=request.POST["name"]
+        phone=request.POST["phone"]
+        pin=request.POST["pin"]
+        location=request.POST["location"]
+        date=request.POST["date"]
+        timeDuration=request.POST["timeDuration"]
+        time=request.POST["start_time"]
+
+        user=request.user #currnetly logged is user
+        # user_model=User.objects.get(username=username)
+        rent_model=Rent_info.objects.create(user=request.user,name=name,number=phone,pin=pin,location=location,dateBooked=date,timeDuration=timeDuration,startTime=time)
+        rent_model.save()
+        return render(request,"submit.html",{msg:"Data Successfully saved"})
+    else:
+        return HttpResponse("Not working")
+
+@login_required(login_url="signin")
+def submit(request):
+    return render(request,"submit.html")
+
+@login_required(login_url="signin")
 def signOut(request):
     auth.logout(request)
     return redirect("signin")
+

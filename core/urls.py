@@ -12,7 +12,9 @@ urlpatterns = [
     path('signup',views.signup,name="signup"),
     path('midConfirm',views.mid,name="midConfirm"),
     path('driverdetails',views.driverdetails,name="driverdetails"),
-
-
+    path('submit',views.submit,name="submit"),
+    path('book',views.book,name="book"),
+    path('rent',views.rent,name="rent"),
+    path('driverLogin',views.driverLogin,name="driverLogin"),
 
 ]

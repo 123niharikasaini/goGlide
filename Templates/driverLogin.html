@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Page</title>
+    <link rel="stylesheet" href="{% static 'css/driverPage.css' %}">
+</head>
+<body>
+    <div class="head">
+        <h1 class="heading">Driver Page</h1>
+        <nav class="navbar">
+            <a href="#">home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="signOut">LogOut</a>
+        </nav>
+    </div>
+        <div class="info">
+
+            <div class="headInfo">Personal Info</div>
+            <div class="personal">
+
+            <div class="c" name="1"><span class="element">Name</span><span class="content">{{obj.name}}</span></div>
+            <div class="c" name="2"><span class="element">Email</span><span class="content">{{obj.email}}</span></div>
+            <div class="c" name="3"><span class="element">Contact</span><span class="content">{{obj.contact}}</span></div>
+            <div class="c" name="4"><span class="element">Date of Birth</span><span class="content">{{obj.dob}}</span></div>
+            <div class="c" name="5"><span class="element">Gender</span><span class="content">{{obj.gender}}</span></div>
+            <div class="c" name="6"><span class="element">Address</span><span class="content">{{obj.address}}</span></div>
+        </div>
+
+        
+            <div class="headInfo">Vehicle  Info</div>
+            <div class="vehicle">
+            <div class="c" name="7"><span class="element">Licence Number</span><span class="content">{{obj.licence_no}}</span></div>
+            <div class="c" name="8"><span class="element">Vehicle Number</span><span class="content">{{obj.vehicle_no}}</span></div>
+            <div class="c" name="9"><span class="element">Vehicle type</span><span class="content">{{obj.vehicle_type}}</span></div>
+
+        </div>
+    </div>
+    </div>
+
+</body>
+</html>
