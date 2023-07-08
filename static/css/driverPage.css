@@ -1,0 +1,63 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: #ffc61a;
+    text-decoration: none;
+}
+
+.head{
+    text-align: center;
+}
+
+.head .navbar{
+    padding: 5px;
+    margin: 10px;
+}
+
+.head .navbar a{
+padding: 10px;
+text-decoration: none;
+color: black;
+}
+
+.head .navbar a:hover{
+border: 2px solid white;
+background: white;
+border-radius: 5px;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+}
+
+.info .headInfo{
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.info .personal{
+    margin: 5px;
+    padding: 10px;
+    justify-self: center;
+}
+
+.info .personal .c .element{
+    padding: 5px;
+}
+
+.info .personal .c .content{
+    padding: 5px;
+    margin: 20px;
+}
+
+.info .vehicle .c .element{
+    padding: 5px;
+}
+
+.info .vehicle .c .content{
+    padding: 5px;
+    margin: 20px;
+}
